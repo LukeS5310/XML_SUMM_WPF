@@ -1,0 +1,43 @@
+﻿<Window x:Name="XML_SUMM_MainWindow" x:Class="XML_SUMM_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XML_SUMM_WPF"
+        mc:Ignorable="d"
+        Title="Подсчет суммы выплат в XML-Файлах 2.0" Height="500" Width="370" ResizeMode="NoResize" VerticalAlignment="Center" Loaded="XML_SUMM_MainWindow_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BTN_BROWSE" Content="Папка..." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="BTN_BROWSE_Click"/>
+        <Label x:Name="LBL_SELECTED_FOLDER" Content="LBL_SELECTED_FOLDER" HorizontalAlignment="Left" Margin="101,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.131,-0.362" Grid.ColumnSpan="2" Width="253" Height="26"/>
+        <Button x:Name="button" Content="СТАРТ" Margin="10,35,10,0" VerticalAlignment="Top" RenderTransformOrigin="0.266,0.078" Grid.ColumnSpan="2" Height="20" Click="button_Click"/>
+        <TabControl x:Name="tabControl" Grid.ColumnSpan="2" Margin="10,60,10,10">
+            <TabItem Header="Сумма">
+                <Grid Background="#FFE5E5E5">
+                    <CheckBox x:Name="CB_BARCODE" Content="Проверять наличие штрих-кодов в файлах почты" Margin="10,10,10,0" VerticalAlignment="Top" ClickMode="Press" IsChecked="True"/>
+                    <GroupBox x:Name="GB_RESULT" Header="Результат" Margin="10,25,10,10" BorderBrush="Blue" FontWeight="Bold" FontSize="14">
+                        <Grid Margin="0">
+                            <Label x:Name="LBL_TEXT1" Content="По cпискам(Банк):" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>
+                            <Label x:Name="LBL_RESULT_SPIS" Content="999.999.999.999" Margin="10,25,10,0" FontSize="34" VerticalAlignment="Top" Height="50"/>
+                            <Label x:Name="LBL_TEXT1_Copy" Content="По описям(Банк):" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>
+                            <Label x:Name="LBL_TEXT1_Copy1" Content="По cпискам(Почта):" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>
+                            <Label x:Name="LBL_RESULT_POST_SPIS" Content="999.999.999.999" Margin="10,169,10,0" FontSize="34" VerticalAlignment="Top" Height="50"/>
+                            <Label x:Name="LBL_RESULT_OPIS" Content="999.999.999.999" Margin="10,101,10,0" FontSize="34" VerticalAlignment="Top" Height="50"/>
+                            <Label x:Name="LBL_TEXT1_Copy4" Content="По описям(Почта):" HorizontalAlignment="Left" Margin="10,217,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>
+                            <Label x:Name="LBL_RESULT_POST_OPIS" Content="999.999.999.999" Margin="10,242,10,0" FontSize="34" VerticalAlignment="Top" Height="50"/>
+                            <Label x:Name="LBL_CNT_BANK" Content="0 Чел." Margin="146,0,0,0" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="2.288,0.586"/>
+                            <Label x:Name="LBL_CNT_POST" Content="0 Чел." Margin="146,144,0,0" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Обратный поток">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
