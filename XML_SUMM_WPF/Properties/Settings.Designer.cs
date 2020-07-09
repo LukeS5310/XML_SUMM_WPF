@@ -34,5 +34,29 @@ namespace XML_SUMM_WPF.Properties {
                 this["XML_FOLDER"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Raions {
+            get {
+                return ((string)(this["Raions"]));
+            }
+            set {
+                this["Raions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Ra_Ver {
+            get {
+                return ((int)(this["Ra_Ver"]));
+            }
+            set {
+                this["Ra_Ver"] = value;
+            }
+        }
     }
 }

@@ -13,8 +13,8 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="BTN_BROWSE" Content="Папка..." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="BTN_BROWSE_Click"/>
         <Label x:Name="LBL_SELECTED_FOLDER" Content="LBL_SELECTED_FOLDER" HorizontalAlignment="Left" Margin="101,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.131,-0.362" Grid.ColumnSpan="2" Width="253" Height="26"/>
-        <Button x:Name="button" Content="СТАРТ" Margin="10,35,10,0" VerticalAlignment="Top" RenderTransformOrigin="0.266,0.078" Grid.ColumnSpan="2" Height="20" Click="button_Click"/>
-        <TabControl x:Name="tabControl" Grid.ColumnSpan="2" Margin="10,60,10,10">
+        <Button x:Name="BTN_START" Content="СТАРТ" Margin="10,35,10,0" VerticalAlignment="Top" RenderTransformOrigin="0.266,0.078" Grid.ColumnSpan="2" Height="20" Click="BTN_START_Click"/>
+        <TabControl x:Name="TC_TABS" Grid.ColumnSpan="2" Margin="10,60,10,10">
             <TabItem Header="Сумма">
                 <Grid Background="#FFE5E5E5">
                     <CheckBox x:Name="CB_BARCODE" Content="Проверять наличие штрих-кодов в файлах почты" Margin="10,10,10,0" VerticalAlignment="Top" ClickMode="Press" IsChecked="True"/>
@@ -35,7 +35,19 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Обратный поток">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <CheckBox x:Name="CB_VID_69_71" Content="Вывести выплаты 69 и 71 в отдельные списки" Margin="10,10,10,0" VerticalAlignment="Top" FontWeight="Bold" IsChecked="True"/>
+                    <TextBox x:Name="TB_RA" HorizontalAlignment="Left" Height="20" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40"/>
+                    <Button x:Name="BTN_RA_ADD" Content="Добавить" Margin="55,30,10,0" VerticalAlignment="Top" Click="BTN_RA_ADD_Click"/>
+                    <Button x:Name="BTN_RA_DELETE" Content="Удалить выделенное" Margin="10,304,10,10" VerticalAlignment="Bottom" Click="BTN_RA_DELETE_Click"/>
+                    <ListBox x:Name="LB_RA_LIST" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,55,10,35">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="9" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </Grid>
             </TabItem>
         </TabControl>
 

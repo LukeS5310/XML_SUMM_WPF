@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Configs\Raions.cs" />
     <Compile Include="DATA\SummData.cs" />
     <Compile Include="SUMM.cs" />
     <Page Include="MainWindow.xaml">

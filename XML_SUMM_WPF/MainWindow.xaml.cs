@@ -25,6 +25,13 @@ namespace XML_SUMM_WPF
             InitializeComponent();
         }
 
+        private enum Tabs : int
+        {
+            Summ,
+            Obr
+
+        }
+
         private void BTN_BROWSE_Click(object sender, RoutedEventArgs e)
         {
             var FBD = new WinForms.FolderBrowserDialog() { ShowNewFolderButton = false, RootFolder = System.Environment.SpecialFolder.Desktop };
@@ -45,25 +52,58 @@ namespace XML_SUMM_WPF
             //load PATH
             LBL_SELECTED_FOLDER.Content = Properties.Settings.Default.XML_FOLDER;
 
+            foreach  (string ra in Configs.Raions.LoadRA())
+            {
+                LB_RA_LIST.Items.Add(ra);
+            }
+           
         }
 
-        private async void button_Click(object sender, RoutedEventArgs e)
+        private async void BTN_START_Click(object sender, RoutedEventArgs e)
         {
             if (Properties.Settings.Default.XML_FOLDER == "")
             {
                 WinForms.MessageBox.Show("Укажите папку!");
                 return;
             }
-            var summ = SUMM.CountSummAsync(Properties.Settings.Default.XML_FOLDER,CB_BARCODE.IsChecked.GetValueOrDefault());
 
-            DATA.SummData ready = await summ;
-            LBL_RESULT_SPIS.Content = String.Format("{0:#,##0.00}", ready.BankSpis);
-            LBL_RESULT_POST_SPIS.Content = String.Format("{0:#,##0.00}", ready.PostOpis);
-            LBL_RESULT_POST_OPIS.Content = String.Format("{0:#,##0.00}", ready.PostOpis);
-            LBL_RESULT_OPIS.Content = String.Format("{0:#,##0.00}", ready.BankOpis);
-            LBL_CNT_BANK.Content = string.Format("{0} Чел.", ready.BankCnt);
-            LBL_CNT_POST.Content = string.Format("{0} Чел.", ready.PostCnt);
+            switch (TC_TABS.SelectedIndex)
+            {
+                case (int)Tabs.Summ:
+                    DATA.SummData ready = await SUMM.CountSummAsync(Properties.Settings.Default.XML_FOLDER, CB_BARCODE.IsChecked.GetValueOrDefault());
+                    LBL_RESULT_SPIS.Content = String.Format("{0:#,##0.00}", ready.BankSpis);
+                    LBL_RESULT_POST_SPIS.Content = String.Format("{0:#,##0.00}", ready.PostOpis);
+                    LBL_RESULT_POST_OPIS.Content = String.Format("{0:#,##0.00}", ready.PostOpis);
+                    LBL_RESULT_OPIS.Content = String.Format("{0:#,##0.00}", ready.BankOpis);
+                    LBL_CNT_BANK.Content = string.Format("{0} Чел.", ready.BankCnt);
+                    LBL_CNT_POST.Content = string.Format("{0} Чел.", ready.PostCnt);
+                    break;
+               
+                default:
+                    break;
+            }
 
+          
+          
+
+        }
+
+        private void BTN_RA_ADD_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TB_RA.Text))
+                return;
+            LB_RA_LIST.Items.Add(TB_RA.Text);
+            Configs.Raions.SaveRa(LB_RA_LIST.Items);
+        }
+
+        private void BTN_RA_DELETE_Click(object sender, RoutedEventArgs e)
+        {
+            if (LB_RA_LIST.SelectedIndex < 0 || LB_RA_LIST.SelectedIndex > LB_RA_LIST.Items.Count)
+                return;
+
+            
+            LB_RA_LIST.Items.RemoveAt(LB_RA_LIST.SelectedIndex);
+            Configs.Raions.SaveRa(LB_RA_LIST.Items);
         }
     }
 }

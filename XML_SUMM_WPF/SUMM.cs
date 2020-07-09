@@ -13,7 +13,12 @@ namespace XML_SUMM_WPF
 {
     class SUMM
     {
-    public static async Task<DATA.SummData> CountSummAsync(string path,Boolean BarCodeCheck = false)
+
+        /// <summary>
+        /// Counting summ and number of people in XML Files
+        /// </summary>
+
+        public static async Task<DATA.SummData> CountSummAsync(string path,Boolean BarCodeCheck = false)
         {
             DATA.SummData Summ = await Task.Run(()=>CountSumm(path,BarCodeCheck));
             return Summ;
