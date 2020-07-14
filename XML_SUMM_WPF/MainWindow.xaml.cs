@@ -78,7 +78,9 @@ namespace XML_SUMM_WPF
                     LBL_CNT_BANK.Content = string.Format("{0} Чел.", ready.BankCnt);
                     LBL_CNT_POST.Content = string.Format("{0} Чел.", ready.PostCnt);
                     break;
-               
+                case (int)Tabs.Obr:
+
+                    break;
                 default:
                     break;
             }

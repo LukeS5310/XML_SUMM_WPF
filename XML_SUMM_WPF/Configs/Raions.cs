@@ -40,7 +40,8 @@ namespace XML_SUMM_WPF.Configs
             {
                 if (stmp == "")
                     stmp = RA;
-                stmp = string.Join(",", stmp, RA);
+                else
+                    stmp = string.Join(",", stmp, RA); //Fixed duplication of first entry
             }
             Settings.Default.Raions = stmp;
             Settings.Default.Save();
