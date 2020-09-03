@@ -59,6 +59,7 @@
     <Compile Include="Configs\Raions.cs" />
     <Compile Include="DATA\SummData.cs" />
     <Compile Include="EXPORT\ISaveFile.cs" />
+    <Compile Include="OBR.cs" />
     <Compile Include="SUMM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

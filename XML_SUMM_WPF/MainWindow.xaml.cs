@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,9 +62,9 @@ namespace XML_SUMM_WPF
 
         private async void BTN_START_Click(object sender, RoutedEventArgs e)
         {
-            if (Properties.Settings.Default.XML_FOLDER == "")
+            if (Properties.Settings.Default.XML_FOLDER == "" || Directory.Exists(Properties.Settings.Default.XML_FOLDER) == false)
             {
-                WinForms.MessageBox.Show("Укажите папку!");
+                WinForms.MessageBox.Show("Папка не указана, или не найдена!");
                 return;
             }
 
